@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: denver                         *-->
+<!--*  Palette: leaves                       *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Macaulay 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "textmacros",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math",
+    "renderActions": {
+      "findScript": [
+        10,
+        function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        },
+        ""
+      ]
+    }
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[tex]/textmacros",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="M2 for all">
+<script src="_static/pretext/js/jquery.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.13.5';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.52176322e2c1dde5.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.bbf2283c5c1d4f99.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.b12a7b3f0773ebcd.css">
+<script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><script>// Make *any* div with class 'sagecell-macaulay2' an executable Sage cell
+// Their results will be linked, only within language type
+sagecell.makeSagecell({
+  "inputLocation": "div.sagecell-macaulay2",
+  "linked": true,
+  "linkKey": "linked-macaulay2",
+  "autoeval": false,
+  "languages": [
+    "macaulay2"
+  ],
+  "evalButtonText": "Evaluate (Macaulay2)"
+});
+</script>
+</head>
+<body class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner"><div class="title-container">
+<h1 class="heading"><a href="g4msto.html"><span class="title">M2 for all</span> <span class="subtitle">maths and conding tutorials for M2</span></a></h1>
+<p class="byline"></p>
+</div></div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="g4msto.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="g4msto.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="ch-invarianttheory.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\R}{\mathbb R}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="ch-M2.html" class="internal"><span class="codenumber">1</span> <span class="title">Macaulay 2</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-M2.html#sec-m2-codespace" class="internal"><span class="codenumber">1.1</span> <span class="title">Creating a M2 Codespace</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch-M2.html#sec-m2-commands" class="internal"><span class="codenumber">1.2</span> <span class="title">Basic M2 Commands</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-M2.html#sec-m2-commands-2" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Arithmetic, Strings, and Lists</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-M2.html#sec-m2-commands-3" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Functions, Apply, and Loops</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-M2.html#sec-m2-commands-4" class="internal"><span class="codenumber">1.2.3</span> <span class="title">Rings, Matrices, Ideals</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-M2.html#sec-m2-commands-5" class="internal"><span class="codenumber">1.2.4</span> <span class="title">Homological Algebra and Gröbner Bases</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-invarianttheory.html" class="internal"><span class="codenumber">2</span> <span class="title">Invariant Theory</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch-invarianttheory.html#sec-invariantrings" class="internal"><span class="codenumber">2.1</span> <span class="title">A concrete introduction to invariant rings</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch-invarianttheory.html#subsec-finite-matrix-groups" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Finite Matrix Groups</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch-invarianttheory.html#subsec-invariant-rings" class="internal"><span class="codenumber">2.1.2</span> <span class="title">Invariant Rings</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch-invarianttheory.html#subsec-reynolds-operator" class="internal"><span class="codenumber">2.1.3</span> <span class="title">Reynolds Operator</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch-invarianttheory.html#sec-degree-bounds-algorithms" class="internal"><span class="codenumber">2.2</span> <span class="title">Degree bounds and algorithms</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch-invarianttheory.html#subsec-noether-degree-bound" class="internal"><span class="codenumber">2.2.1</span> <span class="title">Noether Degree Bound</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch-invarianttheory.html#subsec-hilbert-ideal" class="internal"><span class="codenumber">2.2.2</span> <span class="title">Hilbert Ideal</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch-invarianttheory.html#subsec-presentations" class="internal"><span class="codenumber">2.2.3</span> <span class="title">Presentations</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch-invarianttheory.html#subsec-graph-of-linear-actions" class="internal"><span class="codenumber">2.2.4</span> <span class="title">Graph of Linear Actions</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch-invarianttheory.html#subsec-subspace-arrangement-approach" class="internal"><span class="codenumber">2.2.5</span> <span class="title">Subspace Arrangement Approach</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch-invarianttheory.html#sec-" class="internal"><span class="codenumber">2.3</span> <span class="title">Specialized algorithms</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch-invarianttheory.html#subsec-AGWM" class="internal"><span class="codenumber">2.3.1</span> <span class="title">Abelian Groups and Weight Matrices</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch-invarianttheory.html#subsec-orbitsums" class="internal"><span class="codenumber">2.3.2</span> <span class="title">Permutation actions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch-invarianttheory.html#sec-invariantrings-packages" class="internal"><span class="codenumber">2.4</span> <span class="title">InvariantRings package</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch-invarianttheory.html#subsec-references" class="internal"><span class="codenumber">2.4.1</span> <span class="title">References for the implemented algorithms</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch-invarianttheory.html#sec-invariantring-demos" class="internal"><span class="codenumber">2.4.2</span> <span class="title">InvariantRing Library Demos</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="chapter" id="ch-M2"><h2 class="heading">
+<span class="type">Chapter</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Macaulay 2</span>
+</h2>
+<section class="introduction" id="ch-M2-2"><div class="para" id="ch-M2-2-1">This chapter is co-authored by Francesca Gandini, Sumner Strom, Al Ashir Intisar<div class="autopermalink" data-description="Paragraph"><a href="#ch-M2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></section><section class="section" id="sec-m2-codespace"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Creating a M2 Codespace</span>
+</h3>
+<div class="para" id="sec-m2-codespace-2">A turn-key repository for creating a Codespace for Macaulay2 is available at <a class="external" href="https://github.com/fragandi/M2-codespace" target="_blank">fragandi/M2-codespace</a>. Below we provide detailed instructions. If you are familiar with GitHub Codespaces, you may be able to follow the instructions in the README directly. Otherwise, follow the steps below for a smoother setup.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-codespace-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-m2-codespace-3">
+<em class="emphasis">Step 1:</em> Fork the Repository: Navigate to <a class="external" href="https://github.com/fragandi/M2-codespace" target="_blank">fragandi/M2-codespace</a> and click the Fork button in the top-right corner of the page.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-codespace-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fork-repo-icon"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="external/screenshots/fork_repo.png" class="contained" alt="screenshot of M2-codespace with forking instructions."></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.1.1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Select "Create a new fork" next to the plus icon.<div class="autopermalink" data-description="Figure 1.1.1"><a href="#fork-repo-icon" title="Copy heading and permalink for Figure 1.1.1" aria-label="Copy heading and permalink for Figure 1.1.1">🔗</a></div></figcaption></figure><div class="para" id="sec-m2-codespace-5">
+<em class="emphasis">Step 2:</em> Create a Codespace: Open your forked repository, click the green Code button, and select Create codespace on main.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-codespace-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="create-codespace-icon"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="external/screenshots/create_codespace.png" class="contained" alt="screenshot of creating codespace on forked GitHub repository."></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.1.2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Creating codespace on forked GitHub repository.<div class="autopermalink" data-description="Figure 1.1.2"><a href="#create-codespace-icon" title="Copy heading and permalink for Figure 1.1.2" aria-label="Copy heading and permalink for Figure 1.1.2">🔗</a></div></figcaption></figure><div class="para" id="sec-m2-codespace-7">
+<em class="emphasis">Step 3:</em> Reload VS Code: Once the Codespace starts, open the Command Palette (Ctrl+Shift+P or Cmd+Shift+P), then type:<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-codespace-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<pre class="code-block tex2jax_ignore clipboardable">Reload Window
+</pre>
+<div class="para" id="sec-m2-codespace-9">
+<em class="emphasis">Step 4:</em> Check Macaulay2 Executable Path: If you receive an error like “Cannot find Macaulay2 executable,” open the extension settings for Macaulay2 for Codespace and verify the executable path.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-codespace-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="extension-settings-icon"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="external/screenshots/extension_settings.png" class="contained" alt="screenshot of Macaulay2 for Codespace extension settings."></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.1.3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Go to the Macaulay2 for Codespace extension settings as shown in the image above.<div class="autopermalink" data-description="Figure 1.1.3"><a href="#extension-settings-icon" title="Copy heading and permalink for Figure 1.1.3" aria-label="Copy heading and permalink for Figure 1.1.3">🔗</a></div></figcaption></figure><figure class="figure figure-like" id="executable-path-icon"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="external/screenshots/extension_executable_path.png" class="contained" alt="screenshot of Macaulay2 for Codespace extension settings correct executable path."></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.1.4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>If your path is different than what it shows in the image above try the steps below:<div class="autopermalink" data-description="Figure 1.1.4"><a href="#executable-path-icon" title="Copy heading and permalink for Figure 1.1.4" aria-label="Copy heading and permalink for Figure 1.1.4">🔗</a></div></figcaption></figure><div class="para" id="sec-m2-codespace-12">Fix: Open the Command Palette and disable VS Code Settings Sync:<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-codespace-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<pre class="code-block tex2jax_ignore clipboardable">Settings Sync: Turn Off
+</pre>
+<div class="para" id="sec-m2-codespace-14">Then reload the window again as in Step 3. If problems persist, you may delete and recreate the Codespace.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-codespace-14" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-m2-codespace-15">
+<em class="emphasis">Step 5:</em> Verify Installation: To confirm Macaulay2 installed correctly, open the Command Palette again and run:<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-codespace-15" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<pre class="code-block tex2jax_ignore clipboardable">Codespaces: View Creation Log
+</pre>
+<div class="para" id="sec-m2-codespace-17">Look for confirmation lines like:<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-codespace-17" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<pre class="code-block tex2jax_ignore clipboardable">✅ Macaulay2 installed successfully!
+</pre>
+<div class="para" id="sec-m2-codespace-19">✅ Following all these steps ensures that Macaulay2 is ready to use inside your Codespace and only the correct environment settings are applied.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-codespace-19" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-m2-codespace-20">Alternative: If you want to create your own repository with Macaulay2 support from scratch, copy the .devcontainer/ directory and optionally the M2codes/, image_files/, and README.md from the original repo. Push to GitHub and launch your own Codespace.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-codespace-20" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-m2-codespace-21">For more information on using Macaulay2, visit the <a class="external" href="https://macaulay2.com/doc/Macaulay2/share/doc/Macaulay2/Macaulay2Doc/html/___The_sp__Macaulay2_splanguage.html" target="_blank">official documentation</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-codespace-21" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Section 1.1: Creating a M2 Codespace"><a href="#sec-m2-codespace" title="Copy heading and permalink for Section 1.1: Creating a M2 Codespace" aria-label="Copy heading and permalink for Section 1.1: Creating a M2 Codespace">🔗</a></div></section><section class="section" id="sec-m2-commands"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Basic M2 Commands</span>
+</h3>
+<section class="section" id="sec-m2-commands-2"><h4 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.2.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Arithmetic, Strings, and Lists</span>
+</h4>
+<div class="para" id="sec-m2-commands-2-2">Make sure you run the code cells sequentially since some functions defined in earlier cells are used in later cells. You can also chnage the code in the block to evaluate any valid Macaulay2 code.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-commands-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-m2-commands-2-3">This block introduces basic arithmetic operations in Macaulay2, including exponentiation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-commands-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-m2-commands-2-4" class="ptx-sagecell sagecell-macaulay2"><script type="text/x-sage">restart
+2+2
+3/5 + 7/11
+1*2*3*4
+2^200
+</script></div>
+<div class="para" id="sec-m2-commands-2-5">Here we compute large factorials, demonstrate how multiple expressions are separated by semicolons, and how to access the previous output using `oo`.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-commands-2-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-m2-commands-2-6" class="ptx-sagecell sagecell-macaulay2"><script type="text/x-sage">40!
+100!
+1;2;3*4
+4*5;
+oo
+</script></div>
+<div class="para" id="sec-m2-commands-2-7">Strings are created using double quotes, assigned to variables, and concatenated horizontally with `|` or vertically with `||`.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-commands-2-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-m2-commands-2-8" class="ptx-sagecell sagecell-macaulay2"><script type="text/x-sage">"hi there"
+s = "hi there"
+s | " - " | s
+s || "-- -----" || s
+</script></div>
+<div class="para" id="sec-m2-commands-2-9">Lists are constructed with curly braces. Indexing starts at 0, and element-wise arithmetic works like vector math.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-commands-2-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-m2-commands-2-10" class="ptx-sagecell sagecell-macaulay2"><script type="text/x-sage">s = "hi there"
+L = {1, 2, s}
+L_0
+L_1
+10*{1,2,3} + {1,1,1}
+</script></div>
+<div class="autopermalink" data-description="Section 1.2.1: Arithmetic, Strings, and Lists"><a href="#sec-m2-commands-2" title="Copy heading and permalink for Section 1.2.1: Arithmetic, Strings, and Lists" aria-label="Copy heading and permalink for Section 1.2.1: Arithmetic, Strings, and Lists">🔗</a></div></section><section class="section" id="sec-m2-commands-3"><h4 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.2.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Functions, Apply, and Loops</span>
+</h4>
+<div class="para" id="sec-m2-commands-3-2">Functions are created using the arrow operator `-&gt;`. This block defines a cube function `f` and a two-variable multiplication function `g`.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-commands-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-m2-commands-3-3" class="ptx-sagecell sagecell-macaulay2"><script type="text/x-sage">f = i -> i^3
+f 5
+g = (x,y) -> x * y
+g(6,9)
+</script></div>
+<div class="para" id="sec-m2-commands-3-4">The `apply` function maps a function over a list or range. We also demonstrate a `for` loop to print values and their cubes.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-commands-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-m2-commands-3-5" class="ptx-sagecell sagecell-macaulay2"><script type="text/x-sage">apply({1,2,3,4}, i -> i^2)
+apply({1,2,3,4}, f)
+apply(1 .. 4, f)
+apply(5, f)
+for i from 1 to 5 do print(i, i^3)
+</script></div>
+<div class="autopermalink" data-description="Section 1.2.2: Functions, Apply, and Loops"><a href="#sec-m2-commands-3" title="Copy heading and permalink for Section 1.2.2: Functions, Apply, and Loops" aria-label="Copy heading and permalink for Section 1.2.2: Functions, Apply, and Loops">🔗</a></div></section><section class="section" id="sec-m2-commands-4"><h4 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.2.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Rings, Matrices, Ideals</span>
+</h4>
+<div class="para" id="sec-m2-commands-4-2">This block defines a quotient ring and a free module over it. It also explores indexing of basis vectors and ring metadata using `describe`.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-commands-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-m2-commands-4-3" class="ptx-sagecell sagecell-macaulay2"><script type="text/x-sage">R = ZZ/5[x,y,z];
+(x + y)^5
+R
+describe R
+F = R^3
+F_1
+F_{1,2}
+F_{2,1,1}
+</script></div>
+<div class="para" id="sec-m2-commands-4-4">We define a homomorphism using a matrix and investigate its image, ideal, kernel, and related algebraic information like rank and Poincaré polynomial.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-commands-4-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-m2-commands-4-5" class="ptx-sagecell sagecell-macaulay2"><script type="text/x-sage">f = matrix {{x, y, z}}
+image f
+ideal (x, y, z)
+kernel f
+generators oo
+poincare kernel f
+rank kernel f
+presentation kernel f
+</script></div>
+<div class="para" id="sec-m2-commands-4-6">This segment combines kernel and cokernel into a subquotient module, and explores its generators, relations, and a simplified (pruned) form.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-commands-4-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-m2-commands-4-7" class="ptx-sagecell sagecell-macaulay2"><script type="text/x-sage">cokernel f
+N = kernel f ++ cokernel f
+generators N
+relations N
+prune N
+</script></div>
+<div class="autopermalink" data-description="Section 1.2.3: Rings, Matrices, Ideals"><a href="#sec-m2-commands-4" title="Copy heading and permalink for Section 1.2.3: Rings, Matrices, Ideals" aria-label="Copy heading and permalink for Section 1.2.3: Rings, Matrices, Ideals">🔗</a></div></section><section class="section" id="sec-m2-commands-5"><h4 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.2.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Homological Algebra and Gröbner Bases</span>
+</h4>
+<div class="para" id="sec-m2-commands-5-2">We compute a projective resolution of a module, verify that it is a complex, and examine its Betti table for structure.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-commands-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-m2-commands-5-3" class="ptx-sagecell sagecell-macaulay2"><script type="text/x-sage">C = resolution cokernel f
+C.dd
+C.dd^2 == 0
+betti C
+</script></div>
+<div class="para" id="sec-m2-commands-5-4">We construct a generic matrix, compute its resolution, and build polynomial rings with indexed variables. We generate and analyze a Gröbner basis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-m2-commands-5-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-m2-commands-5-5" class="ptx-sagecell sagecell-macaulay2"><script type="text/x-sage">R = ZZ/101[a .. r];
+g = genericMatrix(R, a, 3, 6)
+M = cokernel g
+time C = resolution M
+betti C
+S = ZZ/101[t_1 .. t_9, u_1 .. u_9];
+m = genericMatrix(S, t_1, 3, 3)
+n = genericMatrix(S, u_1, 3, 3)
+m * n
+j = ideal(m*n - n*m)
+gbj = groebnerBasis j;
+betti gbj
+</script></div>
+<div class="autopermalink" data-description="Section 1.2.4: Homological Algebra and Gröbner Bases"><a href="#sec-m2-commands-5" title="Copy heading and permalink for Section 1.2.4: Homological Algebra and Gröbner Bases" aria-label="Copy heading and permalink for Section 1.2.4: Homological Algebra and Gröbner Bases">🔗</a></div></section><div class="autopermalink" data-description="Section 1.2: Basic M2 Commands"><a href="#sec-m2-commands" title="Copy heading and permalink for Section 1.2: Basic M2 Commands" aria-label="Copy heading and permalink for Section 1.2: Basic M2 Commands">🔗</a></div></section><div class="autopermalink" data-description="Chapter 1: Macaulay 2"><a href="#ch-M2" title="Copy heading and permalink for Chapter 1: Macaulay 2" aria-label="Copy heading and permalink for Chapter 1: Macaulay 2">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="g4msto.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-invarianttheory.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>
