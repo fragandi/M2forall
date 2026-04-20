@@ -1,0 +1,17 @@
+WARNING : Using CLI version 2.38.2 but project's `requirements.txt`
+WARNING : is configured to use 2.17.0. Consider either installing
+WARNING : CLI version 2.17.0 or running `pretext update`
+WARNING : to update `requirements.txt` and other managed files to match 2.38.2.
+INFO    : Now preparing local server to preview your project directory `/workspaces/M2forall`.
+INFO    :   (Reminder: use `pretext deploy` to deploy your built project to a public
+INFO    :   GitHub Pages site that can be shared with readers who cannot access your
+INFO    :   personal computer.)
+INFO    : 
+INFO    : starting server ...
+INFO    : Running in a codespace, so using a subprocess server.
+INFO    : Starting PreTeXt web server
+INFO    : Added pretext web server entry f26e1d3882 23743 8128 localhost
+
+INFO    : Server will soon be available at https://supreme-halibut-pgpq99pj69phrrxx-8128.app.github.dev
+INFO    : Opening browser for target `web` at https://supreme-halibut-pgpq99pj69phrrxx-8128.app.github.dev/output/web
+INFO    : 

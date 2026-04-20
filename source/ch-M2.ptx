@@ -12,7 +12,7 @@ This chapter is co-authored by Francesca Gandini, Sumner Strom, Al Ashir Intisar
       <title>Creating a M2 Codespace</title>
     
       <p>
-        A turn-key repository for creating a Codespace (<xref ref="sec-codespaces"/>) for Macaulay2 is available at
+        A turn-key repository for creating a Codespace for Macaulay2 is available at
         <url href="https://github.com/fragandi/M2-codespace">fragandi/M2-codespace</url>. Below we provide detailed instructions. 
         If you are familiar with GitHub Codespaces, you may be able to follow the instructions in the README directly. Otherwise, follow the steps below for a smoother setup.
       </p>
