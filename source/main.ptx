@@ -15,7 +15,7 @@
 
   <book xml:id="g4msto">
     <title>M2 for all</title>
-    <subtitle>maths and conding tutorials for M2</subtitle>
+    <subtitle>maths and coding tutorials for M2</subtitle>
      <!-- <xi:include href="frontmatter.ptx" /> -->
     <!-- <xi:include href="ch-git-github.ptx"/>
     <xi:include href="ch-first-repo.ptx"/>
