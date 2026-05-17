@@ -9,7 +9,7 @@ in the open-source Computer Algebra System <url href="http://www2.macaulay2.com"
         </p>
 
         <p>
-          You can access an online version of this chapter with live code cell at <url href="https://fragandi.github.io/CURITutorialDevelopment2025/"></url>.
+          You can access an online version of this chapter with live code cell at <url href="https://fragandi.github.io/M2forall"></url>.
           There you can also learn how to set up a virtual machine on Github with Codespaces so that you write and run M2 code from anywhere.
           A turn-key repository for creating a Codespace
            <!-- (<xref ref="sec-codespaces"/>)  -->
@@ -19,12 +19,11 @@ in the open-source Computer Algebra System <url href="http://www2.macaulay2.com"
         <p>
           We also include some background on orbit sums necessary to implement an algorithm to compute invariants for permutations actions. 
           We have worked with a group of collaborators on the first version of the code for this algorithm at the Macaulay2 Workshop at Tulane University in April 2025
-          and plan to further test it and release it with Macaulay2 in Fall 2025.
-        </p>
+          and University of Wisconsin Madison in June 2025. The code is still under development and we welcome contributions, see <url href="https://github.com/galettof/InvariantRing">galettof/InvariantRing</url>.  </p>
         <p>
           We finish the chapter with a selection of examples that illustrate the current capabilities of the InvariantRing package.
           You can run the provided code in your local installation of M2 or go to the online version and execute the code cells on your browser.
-          This works  well even on mobile devices!
+          This works well even on mobile devices!
         </p>
     </introduction>
 
