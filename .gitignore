@@ -1,0 +1,29 @@
+# ── PreTeXt build output & generated files ───────────────────────────
+# Regenerated on every `pretext build`; never commit.
+output/
+_build/
+.cache/
+logs/
+.error_schema.log
+
+# Generated asset caches (latex-image, asymptote, sageplot previews)
+generated-assets/
+
+# ── Editor: VS Code ──────────────────────────────────────────────────
+# Nothing here is worth sharing: the only setting was a Codespace-specific
+# schema path, and the PreTeXt Tools extension configures that itself.
+.vscode/
+
+# ── Python (PreTeXt CLI virtual environments) ────────────────────────
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# ── OS / editor junk ─────────────────────────────────────────────────
+.DS_Store
+._*
+Thumbs.db
+*.swp
+*~
