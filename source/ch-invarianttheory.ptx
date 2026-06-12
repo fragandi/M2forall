@@ -132,7 +132,7 @@ However the polynoial <m>f(\bar x)=x+y</m> is not.
           A good exercise is to prove that this set has the structure of a ring.
            </p>
             <definition><p> Let <m>R= \mathbb{K}[\bar x]</m>. We define the <em>invariant ring</em> for the action of <m>G</m> on <m>R</m> as,
-              <me>R^G : =  \{f \in R \, | f(A\bar x) = f(\bar x), \, \forall A \in G\} \subseteq R.</me>
+              <me>R^G : =  \{f \in R \, \mid f(A\bar x) = f(\bar x), \, \forall A \in G\} \subseteq R.</me>
             </p></definition>
     </subsection>
 
@@ -188,7 +188,7 @@ and we can check that <m>R_G(x+y)=x</m> is indeed invariant.
         <p> A beautiful theorem of Noether establishes that we have a bound on the degree of a minimal generator independent from the action itself, 
           but just in terms of the order of the group. Moreover, we only need to look at images of monomials under the Reynolds operator.</p>
             <theorem><p> The <em>Noether Degree Bound</em> claims a ring of invariants is generated in degrees <m>\leq |G|</m> giving, 
-              <me>R^G = \mathbb{K} [ R_G(\bar x^{\bar \beta}) | \; |\bar \beta| \leq |G|].</me>
+              <me>R^G = \mathbb{K} [ R_G(\bar x^{\bar \beta}) \mid \; |\bar \beta| \leq |G|].</me>
             </p></theorem>
       <p>
         
@@ -239,28 +239,28 @@ and we can check that <m>R_G(x+y)=x</m> is indeed invariant.
 
                 <definition>
                   <p> Let <m>S = \mathbb{K}[f_1,...f_s] \subset R</m>.
-                A presentation of <m>S</m> is a map, <me>T=: \mathbb{K}[u_1,...u_s] \xrightarrow{\phi}S</me>
+                A presentation of <m>S</m> is a map, <me>T := \mathbb{K}[u_1,...u_s] \xrightarrow{\phi}S</me>
                 such that <m>\frac{T}{\text{ker}(\phi)} \cong S</m>. We call the elements of the presentation ideal <m>\text{ker}(\phi)</m> 
                the syzygies of <m>f_i</m>'s.
                 </p>
               </definition>
             
               <p>
-                 Algorithms for finding generators for ideals have been intensely studied and especially in relation with the theory of Groebener bases.
+                 Algorithms for finding generators for ideals have been intensely studied and especially in relation with the theory of Gr&#246;bner bases.
                  We cannot go in the details of these tools, but what is of notice is that they are implemented in Macaulay2 
                  and so we can rely on them in our implementation. In particular, these methods are particularly effective in solving problems 
-                 in Elimnination Theory.  Often the goal is to compute an ideal of relations hoping that this is less complicated than the original structure, 
-                 possibly elimnating some variables.
+                 in Elimination Theory.  Often the goal is to compute an ideal of relations hoping that this is less complicated than the original structure, 
+                 possibly eliminating some variables.
               </p>
            
                 <proposition><p>(Elimination Theory): In <m>S \otimes \mathbb{K}[u_1,...,u_s] = \mathbb{K}[x_1,...,x_n,u_1,...u_s]</m> consider the ideal,
-                <me>I = (u_i - f_x(\bar x) | \, \left\langle f_i\right\rangle = S</me>
+                <me>I = \left(u_i - f_i(\bar x) \mid \, \left\langle f_i\right\rangle = S \right)</me>
                 Then,
                 <me>\text{ker} (\phi)= I \cap \mathbb{K}[u_1,...,u_s]</me>
                 </p></proposition>
            
-                <algorithm><p> Compute a Groebner Basis <m>G</m> for <m>I</m> with elimination order for the <m>x</m>'s.
-                Then, <m>G \cap \mathbb{K}[y_1,...y_s]</m>  is the Groebner Basis for <m>ker \phi</m>
+                <algorithm><p> Compute a Gr&#246;bner Basis <m>G</m> for <m>I</m> with elimination order for the <m>x</m>'s.
+                Then, <m>G \cap \mathbb{K}[u_1,...u_s]</m>  is the Gr&#246;bner Basis for <m>\ker \phi</m>
                 </p></algorithm>
            
     </subsection>
@@ -272,8 +272,8 @@ and we can check that <m>R_G(x+y)=x</m> is indeed invariant.
           </p>
             <definition> <p>Let <m>G</m> be a finite matrix group in <m>GL_n(\mathbb{K})</m>.
             For <m>A\in G</m> consider,
-            <me> V_A = \left\{ ( \bar v, A \bar v) \mid ,v \in V \right \} \subseteq V \oplus V </me>
-            Then <m>A_G = \cup_{A\in G}V_A</m> is the subspace arrangement associated to the action of G.
+            <me> V_A = \left\{ ( \bar v, A \bar v) \mid v \in V \right \} \subseteq V \oplus V </me>
+            Then <m>A_G = \bigcup_{A\in G}V_A</m> is the subspace arrangement associated to the action of <m>G</m>.
             </p></definition>
         
         <p>
@@ -304,21 +304,21 @@ and we can check that <m>R_G(x+y)=x</m> is indeed invariant.
         
     
             <theorem><p>
-                (Derksen): Let <m>I_G = \mathbb{I}(A_G) = \cap_{A\in G}\mathbb{I}(V_A) \subseteq \mathbb{K}[x_1,...x_n,y_1,...y_n].</m>
-            Then <me>(I_G +(y_1,...,y_n)) \cap \R = J_G.</me>
+                (Derksen): Let <m>I_G = \mathbb{I}(A_G) = \bigcap_{A\in G}\mathbb{I}(V_A) \subseteq \mathbb{K}[x_1,...x_n,y_1,...y_n].</m>
+            Then <me>(I_G +(y_1,...,y_n)) \cap R = J_G.</me>
             </p> </theorem>
         
         <p>
            Recent work has shown that the same approach works in the exterior algebra.
         </p>
         <p>
-            <theorem><p>(Gandini) Let <m>I_G^{'} = \cap_{A\in G} \mathbb{I}(V_A) \subseteq \Lambda(\bar x, \bar y)</m>.
-            Then <me>(I_G^{'} +(y_1,...y_n)) \cap \Lambda(x_1,...,x_n) = J_G^{'} : = \Lambda(\bar x)(\Lambda(\bar x)^G)_+</me>
+            <theorem><p>(Gandini) Let <m>I_G^{'} = \bigcap_{A\in G} \mathbb{I}(V_A) \subseteq \Lambda(\bar x, \bar y)</m>.
+            Then <me>(I_G^{'} +(y_1,...y_n)) \cap \Lambda(x_1,...,x_n) = J_G^{'} := \Lambda(\bar x)(\Lambda(\bar x)^G)_+</me>
             </p></theorem>
         </p>
         <p>
            The exterior algebra approach has computational potential. 
-           Whilst Derken's approach leads to an algorithm with a long run time, 
+           Whilst Derksen's approach leads to an algorithm with a long run time, 
            first experiments suggest that a fast algorithm could be implemented for skew polynomials.
            We aim to pursue this line of inquiry in the near future.
         </p>
