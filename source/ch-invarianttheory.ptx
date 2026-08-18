@@ -29,18 +29,7 @@ in the open-source Computer Algebra System <url href="http://www2.macaulay2.com"
 
 <section xml:id="sec-invariantrings">
        <title>A concrete introduction to invariant rings</title>
-       <!-- <subsection xml:id="subsec-introduction">
-        <title>Introduction to invariant theory</title>
-                <p>
-                    With our research we also had  a large focus on making the theory behind invariant rings accessible 
-                  and digestible for undergraduate students. This included making a chapter covering some computational tools 
-                  within invariant theory briefly. We used this to work on a packet, Orbit Sums, in Macaulay2 for efficient computing of permutation groups 
-                  within invariant rings.
-
-                </p>
-    </subsection> -->
-    <!--we should put an introduction into representation thoery here just for readability of notation at an undergraduate level-->
-       <subsection xml:id="subsec-finite-matrix-groups">
+   <subsection xml:id="subsec-finite-matrix-groups">
         <title>Finite Matrix Groups</title>
         <p>
           We can think of a (linear) action within a group as acting on a vector space
