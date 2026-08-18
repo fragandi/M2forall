@@ -86,7 +86,7 @@ x \\
         </p></definition>
   <example>
      <p>
-        Let us consider a two-dimesional representation of <m>C_2</m>, the cyclic group of order 2. <me>\left\langle \begin{pmatrix}
+        Let us consider a two-dimensional representation of <m>C_2</m>, the cyclic group of order 2. <me>\left\langle \begin{pmatrix}
 1 \amp 0 \\
 0 \amp -1 \\
 \end{pmatrix} \right\rangle = \left\{ \begin{pmatrix}
