@@ -3,7 +3,7 @@
     <title>Invariant Theory</title>
     <introduction>
         <p>
-This chapter is co-authored by Francesca Gandini, Al Ashir Intisar, and Sumner Strom. 
+This chapter is co-authored by Francesca Gandini, Al Ashir Intisar, Sumner Strom, and Marcus Cassell. 
 In this chapter we will present an overview of the theory behind the algorithms implemented in the <url href="https://www.macaulay2.com/doc/Macaulay2/share/doc/Macaulay2/InvariantRing/html/index.html">InvariantRing</url> software package 
 in the open-source Computer Algebra System <url href="http://www2.macaulay2.com">Macaulay2 (M2)</url>.
         </p>
